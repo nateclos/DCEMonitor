@@ -6,6 +6,5 @@ public class DCEMonitoring {
 		
 		System.out.println("3/4/2019");
 		
-// >>>>>>> branch 'master' of https://github.com/nateclos/DCEMonitoring
 	}
 }
