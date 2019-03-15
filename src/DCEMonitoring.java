@@ -1,10 +1,13 @@
-public class DCEMonitoring {
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
-	public static void main(String args[]) {
+import dceModel.dceModel;
+
+public class DCEMonitoring {
+	public static void main(String args[]) throws FileNotFoundException {
 		
-		System.out.println("Hello World");
-		
-		System.out.println("3/4/2019");
-		
+		dceModel model = new dceModel("03-01-19-090000_CJ8jjM6P.txt");
 	}
+	
 }
