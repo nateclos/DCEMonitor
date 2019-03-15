@@ -19,4 +19,56 @@ public class dceModel {
 		System.out.println(Arrays.toString(line));
 	}
 	
+	private class pdu {
+		
+		private String name, ip, time;
+		private int currReading;
+		
+		public pdu(String name, String ip, String time, int currReading) {
+			
+			this.name = name;
+			this.ip = ip;
+			this.time = time;
+			this.currReading = currReading;
+			
+		}
+		
+		public String getName() {
+			
+			return this.name;
+			
+		}
+		
+		public String getIp() {
+			
+			return this.ip;
+			
+		}
+		
+		public String getTime() {
+			
+			return this.time;
+			
+		}
+		
+		public int getReading() {
+			
+			return this.currReading;
+			
+		}
+		
+		public void setTime(String time) {
+			
+			this.time = time;
+			
+		}
+		
+		public void setReading(int reading) {
+			
+			this.currReading = reading;
+			
+		}
+		
+	}
+	
 }
