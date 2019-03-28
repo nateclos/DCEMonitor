@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class dceModel {
+public class DCEModel {
 	
 	String fname;
 	
-	public dceModel(String fileName) throws FileNotFoundException {
+	public DCEModel(String fileName) throws FileNotFoundException {
 		
 		this.fname = fileName;
 		Scanner s = new Scanner(new File(fname));
