@@ -7,12 +7,12 @@ import java.util.Scanner;
 
 public class DCEModel {
 	
-	String fname;
+	File file;
 	
-	public DCEModel(String fileName) throws FileNotFoundException {
+	public DCEModel(File f) throws FileNotFoundException {
 		
-		this.fname = fileName;
-		Scanner s = new Scanner(new File(fname));
+		this.file = f;
+		Scanner s = new Scanner(file);
 		String[] line = s.nextLine().split(",");
 		System.out.println(Arrays.toString(line));
 		line = s.nextLine().split(",");
