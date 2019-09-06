@@ -6,7 +6,7 @@ import javafx.application.Application;
 import model.DCEModel;
 import view.DCEView;
 
-public class DCEMonitoring {
+public class DCEMonitor {
 	public static void main(String args[])  {
 		Application.launch(DCEView.class, args);
 	}

@@ -22,19 +22,14 @@ import model.DCEModel;
 
 public class DCEView extends Application {
 
-	private int presses = 0;
 	private DCEController controller = new DCEController();
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setTitle("DCE Monitoring Tool");
+		stage.setTitle("DCEMonitor");
 		GridPane grid = new GridPane();
 		Scene scene = new Scene(grid, 300, 300);
-		Button b = new Button("Press me");
 		TextArea text = new TextArea();
-		b.setOnAction((event) -> {
-			text.appendText("Button has been pressed " + (++presses) + " times!\n");
-		});
 		text.setEditable(false);
 		Button fileChooser = new Button("Choose File");
 		fileChooser.setOnAction((event) -> {
@@ -55,7 +50,7 @@ public class DCEView extends Application {
 			}
 		});
 		HBox hbox = new HBox();
-		hbox.getChildren().addAll(b, fileChooser);
+		hbox.getChildren().addAll(fileChooser);
 		grid.add(hbox, 0, 0);
 		grid.add(text, 0, 1);
 		stage.setScene(scene);
