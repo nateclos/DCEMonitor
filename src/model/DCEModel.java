@@ -19,12 +19,12 @@ public class DCEModel {
 		System.out.println(Arrays.toString(line));
 	}
 	
-	private class pdu {
+	private class Pdu {
 		
 		private String name, ip, time;
 		private int currReading;
 		
-		public pdu(String name, String ip, String time, int currReading) {
+		public Pdu(String name, String ip, String time, int currReading) {
 			
 			this.name = name;
 			this.ip = ip;
