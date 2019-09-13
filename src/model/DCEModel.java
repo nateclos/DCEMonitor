@@ -12,11 +12,7 @@ public class DCEModel {
 	
 	File file;
 	
-	
-	
 	HashMap<String, Pdu> pdus = new HashMap<String, Pdu>();
-	
-	
 	
 	public DCEModel(File f) throws FileNotFoundException {
 		
@@ -35,26 +31,43 @@ public class DCEModel {
 			
 			String name = elements[0];
 			
-			String datetime = elements[5] + ' ' + elements[6];
+			String datetime = elements[5] + elements[6];
 			
 			float amps = Float.valueOf(elements[7].substring(1,elements[7].length() - 1));
 			
-			System.out.println(amps);
+			if(this.pdus.containsKey(name)) {
+				
+				Pdu curr = pdus.get(name);
+				
+				if(curr.getReading() < amps) {
+					
+					curr.setReading(amps);
+					curr.setDateTime(datetime);
+				}
+				
+			} else {
+				
+				Pdu newPdu = new Pdu(name, datetime, amps);
+				this.pdus.put(name, newPdu);
+			}
 			
-			
+		}
+		
+		for(String name : pdus.keySet()) {
+			Pdu curr = pdus.get(name);
+			System.out.printf("Name: %s Date and Time: %s Amps: %f\n", curr.getName(), curr.getDateTime(), curr.getReading());
 		}
 	}
 	
 	private class Pdu {
 		
-		private String name, ip, time;
-		private int currReading;
+		private String name, datetime;
+		private float currReading;
 		
-		public Pdu(String name, String ip, String time, int currReading) {
+		public Pdu(String name, String datetime, float currReading) {
 			
 			this.name = name;
-			this.ip = ip;
-			this.time = time;
+			this.datetime = datetime;
 			this.currReading = currReading;
 			
 		}
@@ -65,31 +78,25 @@ public class DCEModel {
 			
 		}
 		
-		public String getIp() {
+		public String getDateTime() {
 			
-			return this.ip;
-			
-		}
-		
-		public String getTime() {
-			
-			return this.time;
+			return this.datetime;
 			
 		}
 		
-		public int getReading() {
+		public float getReading() {
 			
 			return this.currReading;
 			
 		}
 		
-		public void setTime(String time) {
+		public void setDateTime(String datetime) {
 			
-			this.time = time;
+			this.datetime = datetime;
 			
 		}
 		
-		public void setReading(int reading) {
+		public void setReading(float reading) {
 			
 			this.currReading = reading;
 			
