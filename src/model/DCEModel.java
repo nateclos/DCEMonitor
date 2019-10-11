@@ -17,16 +17,18 @@ public class DCEModel {
 	public DCEModel(File f) throws FileNotFoundException {
 		
 		this.file = f;
-		Scanner s = new Scanner(file);
+		indexFile();
 		
+	}
+	
+	private void indexFile() throws FileNotFoundException {
+		
+		Scanner s = new Scanner(this.file);
 		s.nextLine();
-		
 		while(s.hasNextLine()) {
 			
 			String line = s.nextLine();
-			
-			System.out.println(line);
-			
+						
 			String [] elements = line.split(",");
 			
 			String name = elements[0];
@@ -49,59 +51,31 @@ public class DCEModel {
 				
 				Pdu newPdu = new Pdu(name, datetime, amps);
 				this.pdus.put(name, newPdu);
+				
 			}
 			
 		}
 		
-		for(String name : pdus.keySet()) {
-			Pdu curr = pdus.get(name);
-			System.out.printf("Name: %s Date and Time: %s Amps: %f\n", curr.getName(), curr.getDateTime(), curr.getReading());
-		}
 	}
 	
-	private class Pdu {
+	public ArrayList<Pdu> getAllPdus() {
 		
-		private String name, datetime;
-		private float currReading;
-		
-		public Pdu(String name, String datetime, float currReading) {
-			
-			this.name = name;
-			this.datetime = datetime;
-			this.currReading = currReading;
-			
+		ArrayList<Pdu> res = new ArrayList<Pdu>();
+		for(String name : pdus.keySet()) {
+			Pdu curr = pdus.get(name);
+			res.add(curr);
 		}
+		return res;
+	}
+	
+	public ArrayList<Pdu> getHighPdus() {
 		
-		public String getName() {
-			
-			return this.name;
-			
+		ArrayList<Pdu> res = new ArrayList<Pdu>();
+		for(String name : pdus.keySet()) {
+			Pdu curr = this.pdus.get(name);
+			if(curr.getReading() > 10.0) res.add(curr);
 		}
-		
-		public String getDateTime() {
-			
-			return this.datetime;
-			
-		}
-		
-		public float getReading() {
-			
-			return this.currReading;
-			
-		}
-		
-		public void setDateTime(String datetime) {
-			
-			this.datetime = datetime;
-			
-		}
-		
-		public void setReading(float reading) {
-			
-			this.currReading = reading;
-			
-		}
-		
+		return res;
 	}
 	
 }
